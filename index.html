@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--contour de l'horloge-->
+    <div class="clock">
+        <!--Gestion de l'affichge de l'heure-->
+        <div class="hour">
+            <div class="hr" id="hr"></div>
+        </div>
+        <!--Gestion de l'affichage des minutes-->
+        <div class="min">
+            <div class="mn" id="mn"></div>
+        </div>
+        <!--Gestion de l'affichage des secondes-->
+        <div class="sec">
+            <div class="sc" id="sc"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const deg = 6;
+        const hr = document.querySelector('#hr');
+        const mn = document.querySelector('#mn');
+        const sc = document.querySelector('#sc');
+        //défilement du temps
+        setInterval(() => {
+
+            let day = new Date();
+
+            let hh = day.getHours() * 30;
+            let mm = day.getMinutes() * deg;
+            let ss = day.getSeconds() * deg;
+            //rotation des aiguilles
+            hr.style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+            mn.style.transform = `rotateZ(${(mm)}deg)`;
+            sc.style.transform = `rotateZ(${(ss)}deg)`;
+        })
+    </script>
+</body>
+</html>
